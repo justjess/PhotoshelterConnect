@@ -18,9 +18,18 @@
 {% do view.registerAssetBundle("justjess\\photoshelterconnect\\assetbundles\\photoshelterconnect\\PhotoshelterConnectAsset") %}
 
 {{ forms.textField({
-    label: 'Some Field',
-    instructions: 'Enter some setting here.',
-    id: 'someAttribute',
-    name: 'someAttribute',
-    value: settings['someAttribute']})
+    label: 'PhotoShelter API Key',
+    required: true,
+    instructions: 'Enter your PhotoShelter API Key. You can get an API key from PhotoShelter here: <a href="//http://www.photoshelter.com/developer/">http://www.photoshelter.com/developer/</a>',
+    id: 'apiKey',
+    name: 'apiKey',
+    value: settings['apiKey']})
+}}
+{{ forms.textField({
+    label: 'PhotoShelter User ID',
+    required: true,
+    instructions: 'Enter Your PhotoShelter User ID - it's also your subdomain. Ex: http://<b>justjess</b>.photoshelter.com/',
+    id: 'userId',
+    name: 'userId',
+    value: settings['userId']})
 }}
