@@ -43,11 +43,23 @@ class PhotoshelterConnect extends Component
      *
      * @return mixed
      */
-    public function exampleService()
+     
+    private $baseApiUrl = "http://www.photoshelter.com/psapi/v3/";
+    private $apiKeys = array();
+    private $queryKeys = array();
+    private $_endpoint = '';
+
+    public function __construct()
+    {
+        $settings = craft()->plugins->getPlugin('photoshelter')->getSettings();
+        $this->apiKeys['api_key'] = $settings->apiKey;
+    }
+         
+    public function ps_connect()
     {
         $result = 'something';
         // Check our Plugin's settings for `someAttribute`
-        if (PhotoshelterConnect::$plugin->getSettings()->someAttribute) {
+        if (PhotoshelterConnect::$plugin->getSettings()->apiKey) {
         }
 
         return $result;
