@@ -1,0 +1,44 @@
+{
+    "name": "justjess/photoshelterconnect",
+    "description": "Photoshelter API connector for Craft CMS",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "photoshelter connect"
+    ],
+    "support": {
+        "docs": "https://github.com/justjess/photoshelterconnect/blob/master/README.md",
+        "issues": "https://github.com/justjess/photoshelterconnect/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jessica D'Amico",
+            "homepage": "justjess.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "justjess\\photoshelterconnect\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Photoshelter Connect",
+        "handle": "photoshelter-connect",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/justjess/photoshelterconnect/master/CHANGELOG.md",
+        "components": {
+            "photoshelterConnect": "justjess\\photoshelterconnect\\services\\PhotoshelterConnect"
+        },
+        "class": "justjess\\photoshelterconnect\\PhotoshelterConnect"
+    }
+}
