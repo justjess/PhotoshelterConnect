@@ -70,6 +70,12 @@ class PhotoshelterConnectVariable
 	      return $settings->userId;
 	  }
 	  
+	  public function primaryCollectionId()
+	  {
+	      $settings = photoshelterConnect::$plugin->getSettings ();
+	      return $settings->primaryCollectionId;
+	  }
+	  
     public function getGallery($galleryId)
     {
         return photoshelterConnect::$plugin->photoshelterConnect->getGallery ( $galleryId );

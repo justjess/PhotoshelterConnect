@@ -42,6 +42,7 @@ class Settings extends Model
 
    public $apiKey = 'Your API Key';
    public $userId = 'Your User ID';
+   public $primaryCollectionId = 'Your Primary Collection ID';
   
 
   // Public Methods
@@ -64,6 +65,8 @@ class Settings extends Model
           ['apiKey', 'default', 'value' => 'Your API Key'],
           ['userId', 'string'],
           ['userId', 'default', 'value' => 'Your User ID'],
+          ['primaryCollectionId', 'string'],
+          ['primaryCollectionId', 'default', 'value' => 'Your Primary Collection ID'],
       ];     
   }
 }
