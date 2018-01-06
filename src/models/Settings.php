@@ -39,7 +39,9 @@ class Settings extends Model
      *
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $apiKey = 'API Key';
+    public $userId = 'User ID';
+    
 
     // Public Methods
     // =========================================================================
@@ -57,8 +59,13 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['apiKey', 'string'],
+            ['apiKey', 'default', 'value' => ''],
+            ['userId', 'string'],
+            ['userId', 'default', 'value' => ''],
         ];
+        
+        
+        
     }
 }

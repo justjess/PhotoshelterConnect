@@ -52,6 +52,8 @@ class PhotoshelterConnect extends Plugin
      * @var PhotoshelterConnect
      */
     public static $plugin;
+    public $hasCpSettings = true;
+    public $hasCpSection = false;
 
     // Public Methods
     // =========================================================================
