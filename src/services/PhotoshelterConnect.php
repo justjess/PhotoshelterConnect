@@ -55,16 +55,6 @@ class PhotoshelterConnect extends Component
         $this->apiKeys['api_key'] = $settings->apiKey;
     }
          
-    public function ps_connect()
-    {
-        $result = 'something';
-        // Check our Plugin's settings for `someAttribute`
-        if (PhotoshelterConnect::$plugin->getSettings()->apiKey) {
-        }
-
-        return $result;
-    }
-    
     public function getCollection($collectionId, $options = array())
     	{
     		

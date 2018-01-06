@@ -53,19 +53,19 @@ class PhotoshelterConnectVariable
         }
         return $result;
     }
-    public function collection($options = array())
+    public function getCollection($options = array())
     {
         if(!isset($options['collectionId'])) return null;
         
         return craft()->photoshelterConnect->getCollection($options['collectionId'], $options);
     }
 
-    public function gallery($galleryId)
+    /*public function getGallery($galleryId)
     {
         return craft()->photoshelterConnect->getGallery($galleryId);
     }
 
-    public function galleryImages($options = array())
+    public function getGalleryImages($options = array())
     {
         if(!isset($options['galleryId'])) return null;
 
@@ -75,5 +75,5 @@ class PhotoshelterConnectVariable
     public function image($options = array())
     {
         // @todo
-    }
+    }*/
 }
