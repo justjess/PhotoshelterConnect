@@ -64,4 +64,127 @@ class PhotoshelterConnect extends Component
 
         return $result;
     }
+    
+    public function getCollection($collectionId, $options = array())
+    	{
+    		
+        $this->_endpoint = 'collection/{{collection}}/children';
+    		$this->queryKeys['collection'] = $collectionId;
+    		
+    		$this->queryKeys['fields'] = 'name,mode,description';
+    		$this->queryKeys['per_page'] = '5';
+    		$this->queryKeys['page'] = '1';
+    		
+    		if(isset($options['fields'])) $this->apiKeys['fields'] = $options['fields'];
+    		if(isset($options['per_page'])) $this->apiKeys['per_page'] = $options['per_page'];
+    		if(isset($options['page'])) $this->apiKeys['page'] = $options['page'];
+    		
+    		$extend['KeyImage'] = array('params' => array(),
+    		                        'fields' => '*');
+    
+    		$ext = json_encode($extend);
+    		$this->apiKeys['extend'] = $ext;
+    		                        
+            $response = $this->getApiResponse();
+    
+         	if(!isset($response['Children'])) return null;
+         	
+         	return $response['Children'];
+    	}
+    	
+    	public function getGallery($galleryId)
+  	    {
+	        $this->queryKeys['gallery'] = $galleryId;
+	        $this->_endpoint = 'gallery/{{gallery}}';
+			             
+	        $response = $this->getApiResponse();
+	
+	        // We really care only about the single one, so just return the first item
+	        if(isset($response['Gallery'])) {
+	            return $response['Gallery'];
+	        }
+	
+	        return null;
+  	    }
+  	    
+		   public function getGalleryImages($galleryId, $options = array())
+	       {
+	         $this->_endpoint = 'gallery/{{gallery}}/images';
+	         $this->queryKeys['gallery'] = $galleryId;
+	 
+	         $this->queryKeys['imageMode'] = 'fit';
+	         $this->queryKeys['imageSize'] = '500x500';
+	         $this->queryKeys['sort_by'] = 'file_name';
+	         
+	 				 if(isset($options['imageMode'])) $this->queryKeys['imageMode'] = $options['imageMode'];
+	         if(isset($options['imageSize'])) $this->queryKeys['imageSize'] = $options['imageSize'];
+	         if(isset($options['sort_by'])) $this->apiKeys['sort_by'] = $options['sort_by'];
+	 
+	         $extend['Image'] = array('params' => array(),
+	                                  'fields' => 'image_id,filename');
+	         $extend['Iptc'] = array('params' => array(),
+	                                 'fields' => 'headline,author,copyright');
+	         $extend['ImageLink'] = array('params' => array('image_mode' => '{{imageMode}}',
+	                                                        'image_size' => '{{imageSize}}'),
+	                                     										'fields' => '*');
+	 
+	         $ext = json_encode($extend);
+	         $this->apiKeys['extend'] = $ext;
+	 
+	         $response = $this->getApiResponse();
+	 
+	         if(!isset($response['GalleryImage'])) return null;
+	 
+	         return $response['GalleryImage'];
+	       }
+	       
+	       private function getApiResponse()
+	         {
+             $endpoint = $this->_endpoint;
+     
+             // Directly add the extra api keys so we can replace them
+             $keys = array();
+             foreach($this->apiKeys as $key => $val) {
+                 $keys[] = $key.'='.$val;
+             }
+             $endpoint .= '?'.implode('&', $keys);
+             $url = $this->baseApiUrl . $endpoint;
+     
+             foreach($this->queryKeys as $key => $val) {
+                 $url = str_replace('{{'.$key.'}}', $val, $url);
+             }
+             
+             $response = $this->curlGet($url);
+     
+             if($response == false) return null;
+     
+             return $response;
+	         }
+	         
+	       private function curlGet($url)
+           {
+               try {
+                   $ch = curl_init();
+                   curl_setopt($ch, CURLOPT_URL, $url);
+                   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                   $return = curl_exec($ch);
+                   $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                   curl_close($ch);
+       
+       
+                   if($httpCode == '200') {
+       
+                       $json = json_decode($return, true);
+                       if(!isset($json['data']) || !is_array($json)) return false;
+       
+                       return $json['data'];
+                   }
+       
+               } catch(Exception $e) {
+                   return false;
+               }
+       
+       
+           }   
 }
