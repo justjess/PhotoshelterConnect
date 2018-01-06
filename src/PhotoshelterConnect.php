@@ -12,7 +12,6 @@ namespace justjess\photoshelterconnect;
 
 use justjess\photoshelterconnect\services\PhotoshelterConnect as PhotoshelterConnectService;
 use justjess\photoshelterconnect\variables\PhotoshelterConnectVariable;
-use justjess\photoshelterconnect\models\Settings;
 
 use Craft;
 use craft\base\Plugin;
