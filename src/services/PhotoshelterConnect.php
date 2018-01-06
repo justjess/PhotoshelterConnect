@@ -49,12 +49,6 @@ class PhotoshelterConnect extends Component
     private $queryKeys = array();
     private $_endpoint = '';
 
-    public function __construct()
-    {
-        $settings = craft()->plugins->getPlugin('photoshelter')->getSettings();
-        $this->apiKeys['api_key'] = $settings->apiKey;
-    }
-         
     public function getCollection($collectionId, $options = array())
     	{
     		

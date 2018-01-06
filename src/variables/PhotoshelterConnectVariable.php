@@ -53,19 +53,29 @@ class PhotoshelterConnectVariable
         }
         return $result;
     }
-    public function getCollection($options = array())
+
+		public function siteId()
+	    {
+	        return Craft::$app->sites->currentSite->id;
+	    }
+	    
+	  public function ApiKey()
+	  {
+	      $settings = photoshelterConnect::$plugin->getSettings ();
+	      return $settings->apiKey;
+	  }
+	  public function UserId()
+	  {
+	      $settings = photoshelterConnect::$plugin->getSettings ();
+	      return $settings->userId;
+	  }
+	  
+    public function getGallery($galleryId): string
     {
-        if(!isset($options['collectionId'])) return null;
-        
-        return craft()->photoshelterConnect->getCollection($options['collectionId'], $options);
+        return photoshelterConnect::$plugin->photoshelterConnect->getGallery ( $galleryId );
     }
 
-    /*public function getGallery($galleryId)
-    {
-        return craft()->photoshelterConnect->getGallery($galleryId);
-    }
-
-    public function getGalleryImages($options = array())
+    /*public function getGalleryImages($options = array())
     {
         if(!isset($options['galleryId'])) return null;
 
