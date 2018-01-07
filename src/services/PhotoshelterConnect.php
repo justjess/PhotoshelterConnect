@@ -133,9 +133,9 @@ class PhotoshelterConnect extends Component
            $endpoint .= '?'.implode('&', $keys);
            $url = $this->baseApiUrl . $endpoint;
    
-           //foreach($this->queryKeys as $key => $val) {
-           	//	$url = str_replace('{{'.$key.'}}', $val, $url);
-           //}
+           foreach($this->queryKeys as $key => $val) {
+           		$url = str_replace('{{'.$key.'}}', $val, $url);
+           }
            
            $response = $this->curlGet($url);
    

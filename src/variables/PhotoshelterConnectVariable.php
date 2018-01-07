@@ -82,7 +82,7 @@ class PhotoshelterConnectVariable
 	  }
     public function gallery($galleryId)
     {
-        return photoshelterConnect::$plugin->photoshelterConnect->getGallery ( $galleryId );
+        return photoshelterConnect::$plugin->photoshelterConnect->getGallery($galleryId);
     }
 
     public function galleryImages($options = array())

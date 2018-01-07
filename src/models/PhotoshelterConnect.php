@@ -37,7 +37,20 @@ class PhotoshelterConnect extends Model
      *
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $apiKey;
+    public $userId;
+    public $primaryCollectionId;
+    
+    public function attributeLabels ()
+        {
+            return [
+                'apiKey' => 'Your Photoshelter API Key' ,
+                'UserId' => 'Your Photoshelter User ID' ,
+                'primaryCollectionId' => 'Your Photoshelter Primary Collection ID'
+            ];
+        }
+    
+    // public $someAttribute = 'Some Default';
 
     // Public Methods
     // =========================================================================
@@ -55,8 +68,12 @@ class PhotoshelterConnect extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['apiKey', 'string'],
+            ['apiKey', 'default', 'value' => 'Your Photoshelter API Key'],
+            ['UserId', 'string'],
+            ['UserId', 'default', 'value' => 'Your Photoshelter User ID'],
+            ['primaryCollectionId', 'string'],
+            ['primaryCollectionId', 'default', 'value' => 'Your Photoshelter Primary Collection ID'],
         ];
     }
 }
