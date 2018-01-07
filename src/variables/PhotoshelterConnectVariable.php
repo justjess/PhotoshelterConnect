@@ -75,13 +75,17 @@ class PhotoshelterConnectVariable
 	      $settings = photoshelterConnect::$plugin->getSettings ();
 	      return $settings->primaryCollectionId;
 	  }
-	  
-    public function getGallery($galleryId)
+	  public function collection($options = array())
+	  {
+	      if(!isset($options['collectionId'])) return null;
+	      return photoshelterConnect::$plugin->photoshelterConnect->getCollection($options['collectionId'], $options);
+	  }
+    /*public function getGallery($galleryId)
     {
         return photoshelterConnect::$plugin->photoshelterConnect->getGallery ( $galleryId );
     }
 
-    /*public function getGalleryImages($options = array())
+    public function getGalleryImages($options = array())
     {
         if(!isset($options['galleryId'])) return null;
 
