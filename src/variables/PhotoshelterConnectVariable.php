@@ -80,20 +80,20 @@ class PhotoshelterConnectVariable
 	      if(!isset($options['collectionId'])) return null;
 	      return photoshelterConnect::$plugin->photoshelterConnect->getCollection($options['collectionId'], $options);
 	  }
-    /*public function getGallery($galleryId)
+    public function gallery($galleryId)
     {
         return photoshelterConnect::$plugin->photoshelterConnect->getGallery ( $galleryId );
     }
 
-    public function getGalleryImages($options = array())
+    public function galleryImages($options = array())
     {
         if(!isset($options['galleryId'])) return null;
 
-        return craft()->photoshelterConnect->getGalleryImages($options['galleryId'], $options);
+        return photoshelterConnect::$plugin->photoshelterConnect->getGalleryImages($options['galleryId'], $options);
     }
 
     public function image($options = array())
     {
         // @todo
-    }*/
+    }
 }
