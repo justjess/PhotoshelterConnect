@@ -44,12 +44,12 @@ class PhotoshelterConnect extends Component
      * @return mixed
      */
      
-    private $baseApiUrl = "http://www.photoshelter.com/psapi/v3/";
+    private $baseApiUrl = "https://www.photoshelter.com/psapi/v3/";
     private $apiKeys = array();
     private $queryKeys = array();
     private $_endpoint = '';
-
-    public function getCollection($collectionId, $options = array())
+		
+		public function getCollection($collectionId, $options = array())
     	{
         $this->_endpoint = 'collection/{{collection}}/children';
     		$this->queryKeys['collection'] = $collectionId;
