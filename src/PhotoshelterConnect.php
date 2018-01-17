@@ -129,14 +129,6 @@ class PhotoshelterConnect extends Plugin
         ]};
          
     }
-    
-		/**
-		* @return DefaultService
-		*/
-		public static function getDefaultService(): DefaultService 
-		{
-			return self::getInstance()->photoshelterService;
-		}
 		
     // Protected Methods
     // =========================================================================
@@ -165,5 +157,13 @@ class PhotoshelterConnect extends Plugin
                 'settings' => $this->getSettings()
             ]
         );
+    }
+    
+    /**
+    * @return DefaultService
+    */
+    public static function getDefaultService(): DefaultService 
+    {
+    	return self::getInstance()->photoshelterService;
     }
 }
