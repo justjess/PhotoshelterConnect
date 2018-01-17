@@ -75,9 +75,10 @@ class PhotoshelterConnectVariable
 	      $settings = photoshelterConnect::$plugin->getSettings ();
 	      return $settings->primaryCollectionId;
 	  }
-	  public function collection($options = array())
+	  public function collection($options = [])
 	  {
 	      if(!isset($options['collectionId'])) return null;
+	      
 	      return photoshelterConnect::$plugin->photoshelterConnect->getCollection($options['collectionId'], $options);
 	  }
     public function gallery($galleryId)
@@ -85,14 +86,14 @@ class PhotoshelterConnectVariable
         return photoshelterConnect::$plugin->photoshelterConnect->getGallery($galleryId);
     }
 
-    public function galleryImages($options = array())
+    public function galleryImages($options = [])
     {
         if(!isset($options['galleryId'])) return null;
 
         return photoshelterConnect::$plugin->photoshelterConnect->getGalleryImages($options['galleryId'], $options);
     }
 
-    public function image($options = array())
+    public function image($options = [])
     {
         // @todo
     }
