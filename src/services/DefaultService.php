@@ -176,6 +176,6 @@ class PhotoshelterConnect extends Component
       * @return DefaultService
       */
       protected function getDefaultService(): DefaultService {
-      	return PhotoshelterConnect::get_Instance()->photoshelterService;
+      	return PhotoshelterConnect::getInstance()->photoshelterService;
       }   
 }

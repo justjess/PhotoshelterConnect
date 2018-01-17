@@ -127,7 +127,7 @@ class PhotoshelterConnect extends Plugin
         * @return DefaultService
         */
         public static function getDefaultService(): DefaultService {
-        	return self::get_Instance()->photoshelterService;
+        	return self::getInstance()->photoshelterService;
         } 
     }
 
