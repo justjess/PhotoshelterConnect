@@ -10,7 +10,8 @@
 
 namespace justjess\photoshelterconnect;
 
-use justjess\photoshelterconnect\services\PhotoshelterConnect as PhotoshelterConnectService;
+use justjess\photoshelterconnect\services\DefaultService as PhotoshelterConnectService;
+use justjess\photoshelterconnect\services\DefaultService;
 use justjess\photoshelterconnect\variables\PhotoshelterConnectVariable;
 use justjess\photoshelterconnect\models\Settings;
 
@@ -123,14 +124,20 @@ class PhotoshelterConnect extends Plugin
             __METHOD__
         );
         
-        /**
-        * @return DefaultService
-        */
-        public static function getDefaultService(): DefaultService {
-        	return self::getInstance()->photoshelterService;
-        } 
+        $this->setComponents{[
+        	'photoshelterService' => DefaultService::className(),
+        ]};
+         
     }
-
+    
+		/**
+		* @return DefaultService
+		*/
+		public static function getDefaultService(): DefaultService 
+		{
+			return self::getInstance()->photoshelterService;
+		}
+		
     // Protected Methods
     // =========================================================================
 
