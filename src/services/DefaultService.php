@@ -10,10 +10,9 @@
 
 namespace justjess\photoshelterconnect\services;
 
-use justjess\photoshelterconnect\PhotoshelterConnect;
-
-use Craft;
 use craft\base\Component;
+use http\Exception;
+use justjess\photoshelterconnect\PhotoshelterConnect;
 
 /**
  * PhotoshelterConnect Service
@@ -28,7 +27,7 @@ use craft\base\Component;
  * @package   PhotoshelterConnect
  * @since     1.0.0
  */
-class PhotoshelterConnect extends Component
+class DefaultService extends Component
 {
     // Public Methods
     // =========================================================================
@@ -58,19 +57,32 @@ class PhotoshelterConnect extends Component
     		$this->queryKeys['per_page'] = '5';
     		$this->queryKeys['page'] = '1';
     		
-    		if(isset($options['fields'])) $this->apiKeys['fields'] = $options['fields'];
-    		if(isset($options['per_page'])) $this->apiKeys['per_page'] = $options['per_page'];
-    		if(isset($options['page'])) $this->apiKeys['page'] = $options['page'];
+    		if(isset($options['fields'])) {
+    			$this->apiKeys['fields'] = $options['fields'];
+    		}
+    		if(isset($options['per_page'])) {
+    			$this->apiKeys['per_page'] = $options['per_page'];
+    		}
+    		if(isset($options['page'])) {
+    			$this->apiKeys['page'] = $options['page'];
+    		}
+    		if (isset($options['api_key'])) {
+    		    $this->apiKeys['api_key'] = $options['api_key'];
+    		}
     		
-    		$extend['KeyImage'] = array('params' => array(),
-    		                            'fields' => '*');
+    		$extend['KeyImage'] = [
+    			'params' => [],
+    			'fields' => '*'
+    		];
     
     		$ext = json_encode($extend);
     		$this->apiKeys['extend'] = $ext;
     		                        
         $response = $this->getApiResponse();
     
-        if(!isset($response['Children'])) return null;
+        if(!isset($response['Children'])) {
+        	return null;
+        }
          	
         return $response['Children'];
     	}
