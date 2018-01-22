@@ -10,9 +10,6 @@
 
 namespace justjess\photoshelterconnect\models;
 
-use justjess\photoshelterconnect\PhotoshelterConnect;
-
-use Craft;
 use craft\base\Model;
 
 /**
@@ -44,7 +41,15 @@ class Settings extends Model
    public $userId = 'Your User ID';
    public $primaryCollectionId = 'Your Primary Collection ID';
   
-
+   public function attributeLabels()
+   {
+       return [
+           'apiKey' => 'Your Photoshelter API Key',
+           'userId' => 'Your Photoshelter User ID',
+           'primaryCollectionId' => 'Your Photoshelter Primary Collection ID'
+       ];
+   }
+   
   // Public Methods
   // =========================================================================
 
@@ -62,11 +67,11 @@ class Settings extends Model
   {
       return [
           ['apiKey', 'string'],
-          ['apiKey', 'default', 'value' => 'Your API Key'],
+          ['apiKey', 'default', 'value' => 'Your Photoshelter API Key'],
           ['userId', 'string'],
-          ['userId', 'default', 'value' => 'Your User ID'],
+          ['userId', 'default', 'value' => 'Your Photoshelter User ID'],
           ['primaryCollectionId', 'string'],
-          ['primaryCollectionId', 'default', 'value' => 'Your Primary Collection ID'],
+          ['primaryCollectionId', 'default', 'value' => 'Your Photoshelter Primary Collection ID'],
       ];     
   }
 }
