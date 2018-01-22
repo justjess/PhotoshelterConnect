@@ -61,23 +61,22 @@ class PhotoshelterConnectVariable
 	    
 	  public function ApiKey()
 	  {
-	      $settings = photoshelterConnect::$plugin->getSettings ();
-	      return $settings->apiKey;
+	      $settings = photoshelterConnect::getInstance()->getSettings()->apiKey;
 	  }
 	  public function UserId()
 	  {
-	      $settings = photoshelterConnect::$plugin->getSettings ();
-	      return $settings->userId;
+	      $settings = photoshelterConnect::getInstance()->getSettings()->userId;
 	  }
 	  
 	  public function primaryCollectionId()
 	  {
-	      $settings = photoshelterConnect::$plugin->getSettings ();
-	      return $settings->primaryCollectionId;
+	      $settings = photoshelterConnect::getInstance()->getSettings()->primaryCollectionId;
 	  }
 	  public function collection($options = [])
 	  {
-	      if(!isset($options['collectionId'])) return null;
+	      if(!isset($options['collectionId'])) {
+	      	return null;
+	      }
 	      
 	      return photoshelterConnect::getDefaultService()->getCollection($options['collectionId'], $options);
 	  }
@@ -88,7 +87,9 @@ class PhotoshelterConnectVariable
 
     public function galleryImages($options = [])
     {
-        if(!isset($options['galleryId'])) return null;
+        if(!isset($options['galleryId'])) {
+        	return null;
+        }
 
         return photoshelterConnect::getDefaultService()->getGalleryImages($options['galleryId'], $options);
     }
