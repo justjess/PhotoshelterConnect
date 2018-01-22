@@ -79,18 +79,18 @@ class PhotoshelterConnectVariable
 	  {
 	      if(!isset($options['collectionId'])) return null;
 	      
-	      return photoshelterConnect::$plugin->photoshelterConnect->getCollection($options['collectionId'], $options);
+	      return photoshelterConnect::getDefaultService()->getCollection($options['collectionId'], $options);
 	  }
     public function gallery($galleryId)
     {
-        return photoshelterConnect::$plugin->photoshelterConnect->getGallery($galleryId);
+        return photoshelterConnect::getDefaultService()->getGallery($galleryId);
     }
 
     public function galleryImages($options = [])
     {
         if(!isset($options['galleryId'])) return null;
 
-        return photoshelterConnect::$plugin->photoshelterConnect->getGalleryImages($options['galleryId'], $options);
+        return photoshelterConnect::getDefaultService()->getGalleryImages($options['galleryId'], $options);
     }
 
     public function image($options = [])
