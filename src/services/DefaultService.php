@@ -48,7 +48,7 @@ class DefaultService extends Component
     private $queryKeys = array();
     private $_endpoint = '';
 		
-		public function getCollection($collectionId, $options = array())
+		public function getCollection($collectionId, $options = [])
     	{
         $this->_endpoint = 'collection/{{collection}}/children';
     		$this->queryKeys['collection'] = $collectionId;
@@ -102,7 +102,7 @@ class DefaultService extends Component
         return null;
 	    }
   	    
-	   public function getGalleryImages($galleryId, $options = array())
+	   public function getGalleryImages($galleryId, $options = [])
        {
          $this->_endpoint = 'gallery/{{gallery}}/images';
          $this->queryKeys['gallery'] = $galleryId;

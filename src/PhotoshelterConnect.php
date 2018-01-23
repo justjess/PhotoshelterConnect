@@ -124,9 +124,9 @@ class PhotoshelterConnect extends Plugin
             __METHOD__
         );
         
-        $this->setComponents{[
+        $this->setComponents([
         	'photoshelterService' => DefaultService::className(),
-        ]};
+        ]);
          
     }
 		

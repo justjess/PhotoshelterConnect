@@ -61,16 +61,16 @@ class PhotoshelterConnectVariable
 	    
 	  public function ApiKey()
 	  {
-	      $settings = photoshelterConnect::getInstance()->getSettings()->apiKey;
+	      return photoshelterConnect::getInstance()->getSettings()->apiKey;
 	  }
 	  public function UserId()
 	  {
-	      $settings = photoshelterConnect::getInstance()->getSettings()->userId;
+	      return photoshelterConnect::getInstance()->getSettings()->userId;
 	  }
 	  
 	  public function primaryCollectionId()
 	  {
-	      $settings = photoshelterConnect::getInstance()->getSettings()->primaryCollectionId;
+	      return photoshelterConnect::getInstance()->getSettings()->primaryCollectionId;
 	  }
 	  public function collection($options = [])
 	  {
