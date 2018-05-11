@@ -116,7 +116,7 @@ class DefaultService extends Component
          if(isset($options['sort_by'])) $this->apiKeys['sort_by'] = $options['sort_by'];
  
          $extend['Image'] = array('params' => array(),
-                                  'fields' => 'image_id,file_name');
+                                  'fields' => '*');
          $extend['Iptc'] = array('params' => array(),
                                  'fields' => 'title,keyword,headline,author,copyright,display_caption');
          $extend['ImageLink'] = array('params' => array('image_mode' => '{{imageMode}}',
